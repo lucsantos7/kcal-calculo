@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somando Números</title>
+    <style>
+        body{
+            font: normal 18pt Arial;
+        
+        }
+        li{
+            margin-bottom: 10px;
+        }
+        input{
+            font:normal 18pt Arial;
+            width: 100px;
+        }
+        div#res{
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculando Gasto Calórico de Atividade Física</h1>
+    <ul>
+    <li><input type="number" name="txtn1" id="mets"> METS</li>
+    <li><input type="number" name="txtn2" id="peso"> PESO</li>
+    <li><input type="number" name="txtn2" id="minutos"> MINUTOS</li>
+
+    <input type="button" value="Calcular" onclick="calcularKcal()">
+    </ul>
+    <div id="res"></div>
+    <script>
+      function calcularKcal() {
+        var mets = window.document.getElementById('mets')
+        var peso = window.document.getElementById('peso')
+        var tempoDeAtividade = window.document.querySelector('#minutos') 
+        var vo2 = 3.5
+        var inputMets = Number(mets.value)
+        var inputPeso = Number(peso.value) 
+        var inputTempoDeAtividade = Number(tempoDeAtividade.value)
+        var res = window.document.getElementById('res')
+
+        var kcal = ((inputMets*inputPeso*vo2)/1000)*5*inputTempoDeAtividade 
+        
+        res.innerHTML = `Seu gasto calórico em ${inputTempoDeAtividade} minutos é de <strong>${kcal}</strong> Kcal`
+
+      }
+    </script>
+</body>
+</html>
